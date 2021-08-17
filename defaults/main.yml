@@ -1,1 +1,3 @@
 ---
+# @var pamd_config: 'false' # Define if pamd configuration tasks will be executed
+pamd_config: false

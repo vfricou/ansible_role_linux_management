@@ -16,5 +16,6 @@
 
 - name: "import postinstall tasks"
   import_tasks: pamd/main.yml
+  when: pamd_config
   tags:
     - always
