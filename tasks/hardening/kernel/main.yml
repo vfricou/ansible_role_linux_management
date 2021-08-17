@@ -1,0 +1,41 @@
+---
+- name: "hardening | kernel | configure kernel sysrq control"
+  sysctl:
+    name: kernel.sysrq
+    value: "{{ hard_kernel_sysrq }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+
+- name: integrate PID in coredump
+  sysctl:
+    name: kernel.core_uses_pid
+    value: "{{ hard_kernel_core_uses_pid }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+
+- name: randomize mmap, heap, stack and VDSO pages
+  sysctl:
+    name: kernel.randomize_va_space
+    value: "{{ hard_kernel_randomize_va }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+
+- name: set kernel max PID to {{ kernel['pid_max'] }}
+  sysctl:
+    name: kernel.pid_max
+    value: "{{ hard_kernel_pid_max }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+
+- name: force reboot after kernel panic to {{ kernel['panic'] }} seconds
+  sysctl:
+    name: kernel.panic
+    value: "{{ hard_kernel_panic }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+

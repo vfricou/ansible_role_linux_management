@@ -25,6 +25,10 @@
     - name: "import openssh tasks"
       import_tasks: openssh/main.yml
       when: openssh_config
+
+    - name: "import hardening tasks"
+      import_tasks: hardening/main.yml
+      when: hardening_config
   tags:
     - install
     - security

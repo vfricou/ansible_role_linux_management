@@ -6,6 +6,8 @@
 pamd_config: false
 # @var openssh_config: 'false' # Define if you would configure openssh or not
 openssh_config: false
+# @var hardening_config: 'false' # Define if you would perform hardening tasks
+hardening_config: false
 
 #########################################
 # OpenSSH configurations variables
@@ -39,3 +41,23 @@ ssh_banner_content: |
 # @var ssh_enforce_root_login_src: '' # Define if you would enforce source to allow root login specific method (see default/main.yml for example)
 #ssh_enforce_root_login_src:
 #  127.0.0.1: 'yes'
+
+#########################################
+# Hardening configurations variables
+#########################################
+sysctl_config_file: '/etc/sysctl.d/99-custom_hardening.conf'
+hard_net_ipv4_syncookies: 1
+hard_net_ipv4_syn_retries: 3
+hard_net_ipv4_log_martians: 1
+hard_net_ipv4_rp_filter: 1
+hard_net_ipv4_icmp_ignore_bogus: 1
+# @var hard_kernel_sysrq: 0 # Enable/Disable sysrq
+hard_kernel_sysrq: 0
+# @var hard_kernel_core_uses_pid: 1 # Include PID in coredump
+hard_kernel_core_uses_pid: 1
+# @var hard_kernel_randomize_va: 2 # Randomize mmap, heap, stack and VDSO page
+hard_kernel_randomize_va: 2
+# @var hard_kernel_pid_max: '65535' # Specify process ID max allowed
+hard_kernel_pid_max: '65535'
+# @var hard_kernel_panic: 10 # Automatic reboot time (in seconds) after kernel panic
+hard_kernel_panic: 10

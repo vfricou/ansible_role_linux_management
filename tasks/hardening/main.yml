@@ -1,0 +1,6 @@
+---
+- name: "import network hardening"
+  import_tasks: network/ipv4.yml
+
+- name: "import kernel hardening"
+  import_tasks: kernel/main.yml

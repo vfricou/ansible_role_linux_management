@@ -1,0 +1,47 @@
+---
+- name: "hardening | network | ipv4 | disable syn cookies"
+  sysctl:
+    name: 'net.ipv4.tcp_syncookies'
+    value: "{{ hard_net_ipv4_syncookies }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+
+- name: "hardening | network | ipv4 | limit synack retries"
+  sysctl:
+    name: 'net.ipv4.tcp_synack_retries'
+    value: "{{ hard_net_ipv4_syn_retries }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+
+- name: "hardening | network | ipv4 | log martians packets"
+  sysctl:
+    name: "{{ item }}"
+    value: "{{ hard_net_ipv4_log_martians }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+  with_items:
+    - 'net.ipv4.conf.all.log_martians'
+    - 'net.ipv4.conf.default.log_martians'
+
+- name: "hardening | network | ipv4 | prevent address spoofing"
+  sysctl:
+    name: "{{ item }}"
+    value: "{{ hard_net_ipv4_rp_filter }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+  with_items:
+    - 'net.ipv4.conf.all.rp_filter'
+    - 'net.ipv4.conf.default.rp_filter'
+
+- name: "hardening | network | ipv4 | ignore bad icmp errors"
+  sysctl:
+    name: 'net.ipv4.icmp_ignore_bogus_error_responses'
+    value: "{{ hard_net_ipv4_icmp_ignore_bogus }}"
+    state: present
+    sysctl_file: "{{ sysctl_config_file }}"
+    reload: yes
+
