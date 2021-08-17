@@ -1,9 +1,9 @@
 ---
 galaxy_info:
-  role_name: "linux_postinstall"
+  role_name: "linux_management"
   author: "Vincent FRICOU"
   namespace: "vfricou"
-  description: 'Linux servers post installation tasks'
+  description: 'Linux servers post installation and updates tasks'
   license: MIT
   min_ansible_version: 2.9
   platforms:
@@ -17,6 +17,7 @@ galaxy_info:
         - bullseye
     - name: Ubuntu
       versions:
+        - 18.04
         - 20.04
         - 21.04
     - name: Rocky

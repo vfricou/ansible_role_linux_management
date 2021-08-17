@@ -1,0 +1,10 @@
+# IDE olders
+/.idea
+/.vscode
+/.history
+/.workspace
+*\~
+.*\~
+
+# Useless folders created by molecule
+.cache
