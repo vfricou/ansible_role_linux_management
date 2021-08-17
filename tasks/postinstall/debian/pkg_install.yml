@@ -1,32 +1,32 @@
 ---
 - name: "install debian specific packages"
   block:
-    - name: "debian | pkg_install | install disk tools collection"
+    - name: "postinstall | debian | pkg_install | install disk tools collection"
       apt:
         name: "{{ v_debian['disk_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
 
-    - name: "debian | pkg_install | install network tools collection"
+    - name: "postinstall | debian | pkg_install | install network tools collection"
       apt:
         name: "{{ v_debian['net_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
 
-    - name: "debian | pkg_install | install security tools collection"
+    - name: "postinstall | debian | pkg_install | install security tools collection"
       apt:
         name: "{{ v_debian['security_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
       notify: restart auditd
 
-    - name: "debian | pkg_install | install system tools collection"
+    - name: "postinstall | debian | pkg_install | install system tools collection"
       apt:
         name: "{{ v_debian['sys_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
 
-    - name: "debian | pkg_install | install users tools collection"
+    - name: "postinstall | debian | pkg_install | install users tools collection"
       apt:
         name: "{{ v_debian['users_pkg'] }}"
         state: present

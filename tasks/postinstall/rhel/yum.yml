@@ -1,11 +1,11 @@
 ---
-- name: "rhel | yum | update local cache"
+- name: "postinstall | rhel | yum | update local cache"
   yum:
     update_cache: yes
   tags:
     - always
 
-- name: "rhel | yum | perform full upgrade"
+- name: "postinstall | rhel | yum | perform full upgrade"
   yum:
     name: '*'
     state: latest
@@ -13,7 +13,7 @@
   tags:
     - fullupgrade
 
-- name: "rhel | yum | perform upgrade without kernel"
+- name: "postinstall | rhel | yum | perform upgrade without kernel"
   yum:
     name: '*'
     state: latest
@@ -23,7 +23,7 @@
   tags:
     - safeupgrade
 
-- name: "rhel | yum | perform security and bugfix update"
+- name: "postinstall | rhel | yum | perform security and bugfix update"
   yum:
     name: '*'
     state: latest
