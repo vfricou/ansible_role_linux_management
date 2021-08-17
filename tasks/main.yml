@@ -6,32 +6,10 @@
 # @tag safeupgrade # Perform full upgrade without kernel on any supported OS
 # @tag bugsecupgrade # (RHEL only) Perform bugfix and security update
 
-- block:
-    - name: import check OS tasks
-      import_tasks: check_os.yml
+- name: "import validator tasks"
+  import_tasks: validator/check_os.yml
   tags:
     - always
 
-- name: perform debian based specific tasks
-  block:
-    - name: import apt tasks
-      import_tasks: debian/apt.yml
-
-    - name: import debian packages install
-      import_tasks: debian/pkg_install.yml
-  when: ansible_distribution == 'Debian' or
-        ansible_distribution == 'Ubuntu'
-
-- name: perform rhel based specific tasks
-  block:
-    - name: import yum tasks
-      import_tasks: rhel/yum.yml
-
-    - name: import RedHat packages install
-      import_tasks: rhel/pkg_install.yml
-  when: ansible_distribution == 'CentOS' or
-        ansible_distribution == 'RedHat' or
-        ansible_distribution == 'Rocky'
-
-- name: import common package install
-  import_tasks: pkg_install.yml
+- name: "import postinstall tasks"
+  import_tasks: postinstall/main.yml
