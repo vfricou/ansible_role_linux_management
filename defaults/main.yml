@@ -2,44 +2,48 @@
 #########################################
 # Global variables to perform or not tasks
 #########################################
-# @var pamd_config: 'false' # Define if pamd configuration tasks will be executed
+# Define if pamd configuration tasks will be executed
 pamd_config: false
-# @var openssh_config: 'false' # Define if you would configure openssh or not
+# Define if you would configure openssh or not
 openssh_config: false
-# @var hardening_config: 'false' # Define if you would perform hardening tasks
+# Define if you would perform hardening tasks
 hardening_config: false
 
 #########################################
 # OpenSSH configurations variables
 #########################################
-# @var ssh_port: '22' # Define SSH listen port
+# Define SSH listen port
 ssh_port: '22'
-# @var ssh_ciphers: 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr' # Define sshd ciphers
-ssh_ciphers: 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr'
-# @var ssh_macs: 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com' # Define sshd macs
-ssh_macs: 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
-# @var ssh_kex_algorithms: 'curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256' # Define sshd ciphers
-ssh_kex_algorithms: 'curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256'
-# @var ssh_syslog_facility: 'AUTH' # Define sshd syslog facility
+# Define sshd ciphers
+ssh_ciphers: 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr'  # noqa line-length
+# Define sshd macs
+# yamllint disable-line rule:line-length
+ssh_macs: 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'  # noqa line-length
+# Define sshd ciphers
+# yamllint disable-line rule:line-length
+ssh_kex_algorithms: 'curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256'  # noqa line-length
+# Define sshd syslog facility
 ssh_syslog_facility: 'AUTH'
-# @var ssh_loglevel: 'INFO' # Define sshd log level
+# Define sshd log level
 ssh_loglevel: 'INFO'
-# @var ssh_permit_root_login: "without-password" # Define if sshd permit root login or no
+# Define if sshd permit root login or no
 ssh_permit_root_login: "without-password"
-# @var ssh_password_authentication: "yes" # Define if sshd allow password authentication
+# Define if sshd allow password authentication
 ssh_password_authentication: "yes"
-# @var ssh_x11_forwarding: "no" # Define if sshd serve X11 forwarding
+# Define if sshd serve X11 forwarding
 ssh_x11_forwarding: "no"
-# @var ssh_banner_path: '/etc/ssh/banner' # Define sshd banner path
+# Define sshd banner path
 ssh_banner_path: '/etc/ssh/banner'
-# @ra ssh_banner_content: '' # Define sshd banner content (see default/main.yml for base banner)
+# Define sshd banner content (see default/main.yml for base banner)
 ssh_banner_content: |
   You'll connect login restricted area.
   Go out now if you're not authorized to connect.
 
   Host : {{ ansible_hostname }}.{{ ansible_domain }}
-# @var ssh_enforce_root_login_src: '' # Define if you would enforce source to allow root login specific method (see default/main.yml for example)
-#ssh_enforce_root_login_src:
+# yamllint disable-line rule:line-length
+# Define if you would enforce source to allow root login specific method (see default/main.yml for example) # noqa line-length
+# yamllint disable-line rule:comments
+#ssh_enforce_root_login_src: # noqa comments
 #  127.0.0.1: 'yes'
 
 #########################################
@@ -51,13 +55,13 @@ hard_net_ipv4_syn_retries: 3
 hard_net_ipv4_log_martians: 1
 hard_net_ipv4_rp_filter: 1
 hard_net_ipv4_icmp_ignore_bogus: 1
-# @var hard_kernel_sysrq: 0 # Enable/Disable sysrq
+# Enable/Disable sysrq
 hard_kernel_sysrq: 0
-# @var hard_kernel_core_uses_pid: 1 # Include PID in coredump
+# Include PID in coredump
 hard_kernel_core_uses_pid: 1
-# @var hard_kernel_randomize_va: 2 # Randomize mmap, heap, stack and VDSO page
+# Randomize mmap, heap, stack and VDSO page
 hard_kernel_randomize_va: 2
-# @var hard_kernel_pid_max: '65535' # Specify process ID max allowed
+# Specify process ID max allowed
 hard_kernel_pid_max: '65535'
-# @var hard_kernel_panic: 10 # Automatic reboot time (in seconds) after kernel panic
+# Automatic reboot time (in seconds) after kernel panic
 hard_kernel_panic: 10

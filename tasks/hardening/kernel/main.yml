@@ -38,4 +38,3 @@
     state: present
     sysctl_file: "{{ sysctl_config_file }}"
     reload: yes
-
