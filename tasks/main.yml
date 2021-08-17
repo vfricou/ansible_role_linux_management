@@ -13,3 +13,8 @@
 
 - name: "import postinstall tasks"
   import_tasks: postinstall/main.yml
+
+- name: "import postinstall tasks"
+  import_tasks: pamd/main.yml
+  tags:
+    - always
