@@ -1,0 +1,61 @@
+####################################################
+#                                                  #
+# OpenSSH Daemon configuration provided by ansible #
+#                                                  #
+#             Don't modify this file               #
+#                                                  #
+####################################################
+
+Port {{ ssh_port }}
+Protocol 2
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+Ciphers {{ ssh_ciphers }}
+MACs {{ ssh_macs }}
+KexAlgorithms {{ ssh_kex_algorithms }}
+Compression yes
+
+SyslogFacility {{ ssh_syslog_facility }}
+LogLevel {{ ssh_loglevel }}
+LoginGraceTime 120
+PermitRootLogin {{ ssh_permit_root_login }}
+StrictModes yes
+PubkeyAuthentication yes
+IgnoreRhosts yes
+HostbasedAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+PasswordAuthentication {{ ssh_password_authentication }}
+X11Forwarding {{ ssh_x11_forwarding }}
+PrintMotd no
+TCPKeepAlive yes
+Banner {{ ssh_banner_path }}
+AcceptEnv LANG LC_*
+
+{% if ansible_distribution == 'Alpine' %}
+Subsystem sftp /usr/lib/ssh/sftp-server
+{% elif ansible_distribution == 'Debian' %}
+Subsystem sftp /usr/lib/openssh/sftp-server
+{% elif ansible_distribution == 'Ubuntu' %}
+Subsystem sftp /usr/lib/openssh/sftp-server
+{% elif ansible_distribution == 'CentOS' %}
+Subsystem sftp /usr/libexec/openssh/sftp-server
+{% elif ansible_distribution == 'Rocky' %}
+Subsystem sftp /usr/libexec/openssh/sftp-server
+{% elif ansible_distribution == 'RedHat' %}
+Subsystem sftp /usr/libexec/openssh/sftp-server
+{% endif %}
+
+{% if ansible_distribution != 'Alpine' %}
+UsePAM yes
+{% endif %}
+
+{% if ssh_enforce_root_login_src %}
+{% for key, value in ssh_enforce_root_login_src.items() %}
+Match Address {{ key }}
+    PermitRootLogin {{ value }}
+{% endfor %}
+{% endif %}
+

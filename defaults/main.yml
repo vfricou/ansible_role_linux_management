@@ -1,3 +1,41 @@
 ---
+#########################################
+# Global variables to perform or not tasks
+#########################################
 # @var pamd_config: 'false' # Define if pamd configuration tasks will be executed
 pamd_config: false
+# @var openssh_config: 'false' # Define if you would configure openssh or not
+openssh_config: false
+
+#########################################
+# OpenSSH configurations variables
+#########################################
+# @var ssh_port: '22' # Define SSH listen port
+ssh_port: '22'
+# @var ssh_ciphers: 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr' # Define sshd ciphers
+ssh_ciphers: 'chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr'
+# @var ssh_macs: 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com' # Define sshd macs
+ssh_macs: 'hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
+# @var ssh_kex_algorithms: 'curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256' # Define sshd ciphers
+ssh_kex_algorithms: 'curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256'
+# @var ssh_syslog_facility: 'AUTH' # Define sshd syslog facility
+ssh_syslog_facility: 'AUTH'
+# @var ssh_loglevel: 'INFO' # Define sshd log level
+ssh_loglevel: 'INFO'
+# @var ssh_permit_root_login: "without-password" # Define if sshd permit root login or no
+ssh_permit_root_login: "without-password"
+# @var ssh_password_authentication: "yes" # Define if sshd allow password authentication
+ssh_password_authentication: "yes"
+# @var ssh_x11_forwarding: "no" # Define if sshd serve X11 forwarding
+ssh_x11_forwarding: "no"
+# @var ssh_banner_path: '/etc/ssh/banner' # Define sshd banner path
+ssh_banner_path: '/etc/ssh/banner'
+# @ra ssh_banner_content: '' # Define sshd banner content (see default/main.yml for base banner)
+ssh_banner_content: |
+  You'll connect login restricted area.
+  Go out now if you're not authorized to connect.
+
+  Host : {{ ansible_hostname }}.{{ ansible_domain }}
+# @var ssh_enforce_root_login_src: '' # Define if you would enforce source to allow root login specific method (see default/main.yml for example)
+#ssh_enforce_root_login_src:
+#  127.0.0.1: 'yes'

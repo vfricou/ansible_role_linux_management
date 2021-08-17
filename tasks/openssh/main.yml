@@ -1,0 +1,21 @@
+---
+# Tags : Install / Security / Configure
+
+- name: "openssh | update sshd configurations"
+  template:
+    src: 'openssh/sshd_config.j2'
+    dest: '/etc/ssh/sshd_config'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+    backup: yes
+  notify: restart openssh
+
+- name: "openssh | setup banner"
+  copy:
+    content: "{{ ssh_banner_content }}"
+    dest: "{{ ssh_banner_path }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0444'
+    backup: yes

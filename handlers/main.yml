@@ -7,3 +7,9 @@
 
 - name: update mlocate database
   command: updatedb
+
+- name: restart openssh
+  service:
+    name: ssh
+    enabled: yes
+    state: restarted
