@@ -1,17 +1,17 @@
 ---
-- name: "debian | apt | update local cache"
+- name: "postinstall | debian | apt | update local cache"
   apt:
     update_cache: yes
     cache_valid_time: 7200
   tags:
     - always
 
-- name: "debian | apt | get packages facts"
+- name: "postinstall | debian | apt | get packages facts"
   package_facts:
   tags:
     - always
 
-- name: "debian | apt | lock kernel packages"
+- name: "postinstall | debian | apt | lock kernel packages"
   dpkg_selections:
     name: '{{ item }}'
     selection: hold
@@ -20,7 +20,7 @@
   tags:
     - safeupgrade
 
-- name: "debian | apt | unlock kernel packages"
+- name: "postinstall | debian | apt | unlock kernel packages"
   dpkg_selections:
     name: '{{ item }}'
     selection: install
@@ -30,7 +30,7 @@
     - fullupgrade
     - install
 
-- name: "debian | apt | perform full upgrade"
+- name: "postinstall | debian | apt | perform full upgrade"
   apt:
     upgrade: full
   environment:
@@ -38,7 +38,7 @@
   tags:
     - fullupgrade
 
-- name: "debian | apt | perform upgrade without kernel"
+- name: "postinstall | debian | apt | perform upgrade without kernel"
   apt:
     upgrade: safe
   environment:
