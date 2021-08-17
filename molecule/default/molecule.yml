@@ -1,0 +1,48 @@
+---
+dependency:
+  name: galaxy
+# Define podman as driver to perform tests with systemd container instances
+driver:
+  name: podman
+# Define multiples platforms to validate all playbook
+platforms:
+  - name: molecule_debian10_instance
+    dockerfile: Dockerfile-debian10.j2
+    image: debian:10-slim
+    command: "/sbin/init"
+  - name: molecule_debian11_instance
+    dockerfile: Dockerfile-debian11.j2
+    image: debian:11-slim
+    command: "/sbin/init"
+  - name: molecule_rocky8_instance
+    dockerfile: Dockerfile-rocky8.j2
+    image: rockylinux/rockylinux:8
+    command: "/usr/sbin/init"
+  - name: molecule_ubuntu2104_instance
+    dockerfile: Dockerfile-ubuntu2104.j2
+    image: ubuntu:21.04
+    command: "/sbin/init"
+  - name: molecule_ubuntu2004_instance
+    dockerfile: Dockerfile-ubuntu2004.j2
+    image: ubuntu:20.04
+    command: "/sbin/init"
+  - name: molecule_ubuntu1804_instance
+    dockerfile: Dockerfile-ubuntu1804.j2
+    image: ubuntu:18.04
+    command: "/sbin/init"
+#  - name: molecule_opensuse15_instance
+#    dockerfile: Dockerfile-opensuse15.j2
+#    image: opensuse/leap:15
+# Perform linting steps with yamllint and ansible-lint
+lint: |
+  set -e
+  printf "##########################################\n"
+  printf "# Performing yamllint \n"
+  yamllint -c ./molecule/lint_config/config.yml .
+  printf "##########################################\n"
+  printf "# Performing ansible-lint \n"
+  ansible-lint -c ./molecule/lint_config/ansible-lint.yml .
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

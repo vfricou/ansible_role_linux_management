@@ -1,0 +1,46 @@
+---
+- name: "debian | apt | update local cache"
+  apt:
+    update_cache: yes
+  tags:
+    - always
+
+- name: "debian | apt | get packages facts"
+  package_facts:
+  tags:
+    - always
+
+- name: "debian | apt | lock kernel packages"
+  dpkg_selections:
+    name: '{{ item }}'
+    selection: hold
+  with_items:
+    - "{{ ansible_facts.packages.keys()|list | map('regex_search', v_debian['exclusions']) | select('string') }}"
+  tags:
+    - safeupgrade
+
+- name: "debian | apt | unlock kernel packages"
+  dpkg_selections:
+    name: '{{ item }}'
+    selection: install
+  with_items:
+    - "{{ ansible_facts.packages.keys()|list | map('regex_search', v_debian['exclusions']) | select('string') }}"
+  tags:
+    - fullupgrade
+    - install
+
+- name: "debian | apt | perform full upgrade"
+  apt:
+    upgrade: full
+  environment:
+    ACCEPT_EULA: y
+  tags:
+    - fullupgrade
+
+- name: "debian | apt | perform upgrade without kernel"
+  apt:
+    upgrade: safe
+  environment:
+    ACCEPT_EULA: y
+  tags:
+    - safeupgrade

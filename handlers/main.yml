@@ -1,0 +1,9 @@
+---
+- name: restart auditd
+  service:
+    state: started
+    enabled: yes
+    name: auditd
+
+- name: update mlocate database
+  command: updatedb

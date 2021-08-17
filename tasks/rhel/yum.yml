@@ -1,0 +1,36 @@
+---
+- name: "rhel | yum | update local cache"
+  yum:
+    update_cache: yes
+  tags:
+    - always
+
+- name: "rhel | yum | perform full upgrade"
+  yum:
+    name: '*'
+    state: latest
+    update_only: yes
+  tags:
+    - fullupgrade
+
+- name: "rhel | yum | perform upgrade without kernel"
+  yum:
+    name: '*'
+    state: latest
+    update_only: yes
+    exclude:
+      - "{{ v_rhel['exclusions'] }}"
+  tags:
+    - safeupgrade
+
+- name: "rhel | yum | perform security and bugfix update"
+  yum:
+    name: '*'
+    state: latest
+    update_only: yes
+    bugfix: yes
+    security: yes
+    exclude:
+      - "{{ v_rhel['exclusions'] }}"
+  tags:
+    - bugsecupgrade

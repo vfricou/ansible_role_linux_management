@@ -1,0 +1,8 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Include test_linux_postinstall
+    include_role:
+      name: 'test_linux_postinstall'

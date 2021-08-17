@@ -1,0 +1,30 @@
+---
+- name: "install common packages"
+  block:
+    - name: "pkg_install | install disk collection tools"
+      package:
+        state: present
+        name: "{{ v_common['disk_pkg'] }}"
+
+    - name: "pkg_install | install net collection tools"
+      package:
+        state: present
+        name: "{{ v_common['net_pkg'] }}"
+
+    - name: "pkg_install | install sys collection tools"
+      package:
+        state: present
+        name: "{{ v_common['sys_pkg'] }}"
+      notify: update mlocate database
+
+    - name: "pkg_install | install shell"
+      package:
+        state: present
+        name: "{{ v_common['shell_pkg'] }}"
+
+    - name: "pkg_install | install security collection tools"
+      package:
+        state: present
+        name: "{{ v_common['security_pkg'] }}"
+  tags:
+    - install

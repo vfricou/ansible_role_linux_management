@@ -1,0 +1,57 @@
+---
+# Common variables
+v_common:
+  disk_pkg:
+    - iotop
+    - ncdu  # Require EPEL on RHEL systems
+  net_pkg:
+    - iftop  # Require EPEL on RHEL systems
+    - nmap
+    - mtr
+    - tcpdump
+  sys_pkg:
+    - htop  # Require EPEL on RHEL systems
+    - strace
+    - git
+    - ca-certificates
+    - mlocate
+  shell_pkg:
+    - zsh
+  security_pkg:
+    - iptables
+
+# Debian based variables
+v_debian:
+  dpkg_opts: 'force-confold'
+  exclusions: '(^linux-.*|^docker.*|^containerd.*)'
+  disk_pkg:
+    - gdisk
+  net_pkg:
+    - nicstat
+  sys_pkg:
+    - alien
+    - pastebinit
+    - apt-transport-https
+  users_pkg:
+    - vim
+  security_pkg:
+    - auditd
+
+# RedHat based variables
+v_rhel:
+  exclusions: "kernel*,docker*,containerd*"
+  disk_pkg:
+    - gdisk
+  users_pkg:
+    - vim-enhanced
+  security_pkg:
+    - audit
+
+# OpenSuse based variables
+v_opensuse:
+  sys_pkg:
+    - snapper
+  users_pkg:
+    - vim
+  security_pkg:
+    - audit
