@@ -10,6 +10,6 @@
 
 - name: restart openssh
   service:
-    name: ssh
+    name: sshd
     enabled: yes
     state: restarted
