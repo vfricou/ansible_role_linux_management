@@ -1,9 +1,5 @@
 ####################################################
-#                                                  #
-# OpenSSH Daemon configuration provided by ansible #
-#                                                  #
-#             Don't modify this file               #
-#                                                  #
+#  OpenSSH daemon config file provided by Ansible  #
 ####################################################
 
 Port {{ ssh_port }}
@@ -52,7 +48,7 @@ Subsystem sftp /usr/libexec/openssh/sftp-server
 UsePAM yes
 {% endif %}
 
-{% if ssh_enforce_root_login_src %}
+{% if ssh_enforce_root_login_src is defined %}
 {% for key, value in ssh_enforce_root_login_src.items() %}
 Match Address {{ key }}
     PermitRootLogin {{ value }}
