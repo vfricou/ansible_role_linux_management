@@ -1,5 +1,5 @@
 ---
-- name: "install debian specific packages"
+- name: "install rhel specific packages"
   block:
     - name: "rhel | pkg_install | enable EPEL repository"
       yum:
@@ -11,22 +11,21 @@
       yum:
         name:
           - dnf
-          - python3-dnf
         state: present
 
     - name: "rhel | pkg_install | install disk tools collection"
-      dnf:
+      yum:
         name: "{{ v_rhel['disk_pkg'] }}"
         state: present
 
     - name: "rhel | pkg_install | install security tools collection"
-      dnf:
+      yum:
         name: "{{ v_rhel['security_pkg'] }}"
         state: present
       notify: restart auditd
 
     - name: "rhel | pkg_install | install users tools collection"
-      dnf:
+      yum:
         name: "{{ v_rhel['users_pkg'] }}"
         state: present
 
