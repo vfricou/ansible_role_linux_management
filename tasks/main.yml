@@ -7,15 +7,15 @@
 # @tag bugsecupgrade # (RHEL only) Perform bugfix and security update
 
 - name: "import validator tasks"
-  import_tasks: validator/check_os.yml
+  ansible.builtin.import_tasks: validator/check_os.yml
   tags:
     - always
 
 - name: "import postinstall tasks"
-  import_tasks: postinstall/main.yml
+  ansible.builtin.import_tasks: postinstall/main.yml
 
 - name: "import postinstall tasks"
-  import_tasks: pamd/main.yml
+  ansible.builtin.import_tasks: pamd/main.yml
   when: pamd_config
   tags:
     - always

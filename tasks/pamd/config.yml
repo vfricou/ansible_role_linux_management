@@ -1,6 +1,6 @@
 ---
 - name: "pamd | config | redhat based os - update pamd permission for wheel group"
-  replace:
+  ansible.builtin.replace:
     path: /etc/pam.d/su
     regexp: '#(\s*)auth(\s+)sufficient(\s+)pam_wheel.so(\s+)trust(\s+)use_uid'
     replace: 'auth sufficient pam_wheel.so trust use_uid'
@@ -9,7 +9,7 @@
         ansible_distribution == 'Rocky'
 
 - name: "pamd | config | debian based os - update pamd permission for wheel group"
-  replace:
+  ansible.builtin.replace:
     path: /etc/pam.d/su
     regexp: '#(\s*)auth(\s+)sufficient(\s+)pam_wheel.so(\s+)trust'
     replace: 'auth sufficient pam_wheel.so trust'

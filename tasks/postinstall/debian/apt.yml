@@ -1,18 +1,18 @@
 ---
 - name: "postinstall | debian | apt | update local cache"
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
     cache_valid_time: 7200
   tags:
     - always
 
 - name: "postinstall | debian | apt | get packages facts"
-  package_facts:
+  ansible.builtin.package_facts:
   tags:
     - always
 
 - name: "postinstall | debian | apt | lock kernel packages"
-  dpkg_selections:
+  ansible.builtin.dpkg_selections:
     name: '{{ item }}'
     selection: hold
   with_items:
@@ -21,7 +21,7 @@
     - safeupgrade
 
 - name: "postinstall | debian | apt | unlock kernel packages"
-  dpkg_selections:
+  ansible.builtin.dpkg_selections:
     name: '{{ item }}'
     selection: install
   with_items:
@@ -31,7 +31,7 @@
     - install
 
 - name: "postinstall | debian | apt | perform full upgrade"
-  apt:
+  ansible.builtin.apt:
     upgrade: full
   environment:
     ACCEPT_EULA: y
@@ -39,7 +39,7 @@
     - fullupgrade
 
 - name: "postinstall | debian | apt | perform upgrade without kernel"
-  apt:
+  ansible.builtin.apt:
     upgrade: safe
   environment:
     ACCEPT_EULA: y

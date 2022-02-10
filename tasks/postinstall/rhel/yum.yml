@@ -1,12 +1,12 @@
 ---
 - name: "postinstall | rhel | yum | update local cache"
-  yum:
+  ansible.builtin.yum:
     update_cache: yes
   tags:
     - always
 
 - name: "postinstall | rhel | yum | perform full upgrade"
-  yum:
+  ansible.builtin.yum:
     name: '*'
     state: latest
     update_only: yes
@@ -14,7 +14,7 @@
     - fullupgrade
 
 - name: "postinstall | rhel | yum | perform upgrade without kernel"
-  yum:
+  ansible.builtin.yum:
     name: '*'
     state: latest
     update_only: yes
@@ -24,7 +24,7 @@
     - safeupgrade
 
 - name: "postinstall | rhel | yum | perform security and bugfix update"
-  yum:
+  ansible.builtin.yum:
     name: '*'
     state: latest
     update_only: yes
