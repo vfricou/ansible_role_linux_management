@@ -17,14 +17,10 @@ galaxy_info:
         - bullseye
     - name: Ubuntu
       versions:
-        - 18.04
-        - 20.04
-        - 21.04
+        - bionic
+        - focal
+        - impish
     - name: Rocky
       versions:
         - 8
-    - name: OpenSuse
-      versions:
-        - 15
-
 dependencies: []
