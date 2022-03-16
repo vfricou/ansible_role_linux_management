@@ -44,7 +44,7 @@ You need to have python3 package installed on remote OS to use this role.
 # Package List
 
 | Collection | OS             | Package             |
-| ---------- | -------------  | ------------------- |
+| ---------- | -------------  |---------------------|
 | Disk       | All            | iotop               |
 | Disk       | All            | ncdu                |
 | Disk       | Debian (based) | gdisk               |
@@ -66,6 +66,7 @@ You need to have python3 package installed on remote OS to use this role.
 | System     | All            | strace              | 
 | System     | All            | git                 |
 | System     | All            | ca-certificates     |
+| System     | All            | tree                |
 | System     | Debian (based) | alien               |
 | System     | Debian (based) | pastebinit          | 
 | System     | Debian (based) | apt-transport-https |

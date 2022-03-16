@@ -15,6 +15,7 @@ v_common:
     - git
     - ca-certificates
     - mlocate
+    - tree
   shell_pkg:
     - zsh
   security_pkg:
