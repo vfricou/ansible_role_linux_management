@@ -22,7 +22,8 @@
       ansible.builtin.import_tasks: rhel/pkg_install.yml
   when: ansible_distribution == 'CentOS' or
         ansible_distribution == 'RedHat' or
-        ansible_distribution == 'Rocky'
+        ansible_distribution == 'Rocky' or
+        ansible_distribution == 'AlmaLinux'
 
 - name: import common package install
   ansible.builtin.import_tasks: pkg_install.yml

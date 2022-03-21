@@ -23,4 +23,7 @@ galaxy_info:
     - name: Rocky
       versions:
         - 8
+    - name: AlmaLinux
+      versions:
+        - 8
 dependencies: []
