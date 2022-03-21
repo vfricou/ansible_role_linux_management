@@ -16,6 +16,7 @@ v_common:
     - ca-certificates
     - mlocate
     - tree
+    - vim
   shell_pkg:
     - zsh
   security_pkg:
@@ -33,8 +34,6 @@ v_debian:
     - alien
     - pastebinit
     - apt-transport-https
-  users_pkg:
-    - vim
   security_pkg:
     - auditd
 
@@ -43,8 +42,6 @@ v_rhel:
   exclusions: "kernel*,docker*,containerd*"
   disk_pkg:
     - gdisk
-  users_pkg:
-    - vim-enhanced
   security_pkg:
     - audit
 
@@ -52,7 +49,5 @@ v_rhel:
 v_opensuse:
   sys_pkg:
     - snapper
-  users_pkg:
-    - vim
   security_pkg:
     - audit
