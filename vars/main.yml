@@ -1,4 +1,29 @@
 ---
+# Supported OS definition
+supported_platforms:
+  - name: Debian
+    versions:
+      - 10
+      - 11
+  - name: Rocky
+    versions:
+      - 8
+  - name: Ubuntu
+    versions:
+      - 18.04
+      - 20.04
+      - 21.04
+  - name: RedHat
+    versions:
+      - 7
+      - 8
+  - name: CentOS
+    versions:
+      - 7
+  - name: AlmaLinux
+    versions:
+      - 8
+
 # Common variables
 v_common:
   disk_pkg:
