@@ -2,4 +2,14 @@
 - name: "postinstall | rhel | subscription | attach rhel server to redhat subscription manager"
   ansible.builtin.raw: "subscription-manager register --username {{ rhel_subscription_user }} --password {{ rhel_subscription_pass }} --auto-attach"
   tags:
+    - install
+
+- name: "postinstall | rhel | subscription | manage subscription"
+  community.general.redhat_subscription:
+    state: present
+    username: "{{ rhel_subscription_user }}"
+    password: "{{ rhel_subscription_pass }}"
+    auto_attach: yes
+    force_register: "{{ rhel_subscription_force }}"
+  tags:
     - subscription

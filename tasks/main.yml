@@ -1,10 +1,11 @@
 ---
 # @meta author: Vincent FRICOU
 # @meta description: Linux servers OS postinstallation and updates management
-# @tag install # Perform packages installations on any supported OS
+# @tag install # Perform packages installations on any supported OS and initial registration for RHEL OS
 # @tag fullupgrade # Perform full upgrade on any supported OS
 # @tag safeupgrade # Perform full upgrade without kernel on any supported OS
 # @tag bugsecupgrade # (RHEL only) Perform bugfix and security update
+# @tag subscription # (RHEL only) Perform subscription update
 
 - name: "import validator tasks"
   ansible.builtin.import_tasks: validator/check_os.yml
