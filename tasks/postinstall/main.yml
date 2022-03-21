@@ -1,4 +1,8 @@
 ---
+- name: "postinstall | link RHEL to subscription manager"
+  ansible.builtin.import_tasks: rhel/subscription.yml
+  when: ansible_distribution == 'RedHat'
+
 - name: perform debian based specific tasks
   block:
     - name: import apt tasks
