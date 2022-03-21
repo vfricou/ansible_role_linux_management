@@ -24,10 +24,5 @@
         state: present
       notify: restart auditd
 
-    - name: "postinstall | rhel | pkg_install | install users tools collection"
-      ansible.builtin.dnf:
-        name: "{{ v_rhel['users_pkg'] }}"
-        state: present
-
   tags:
     - install

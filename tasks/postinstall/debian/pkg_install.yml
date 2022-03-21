@@ -26,11 +26,5 @@
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
 
-    - name: "postinstall | debian | pkg_install | install users tools collection"
-      ansible.builtin.apt:
-        name: "{{ v_debian['users_pkg'] }}"
-        state: present
-        dpkg_options: "{{ v_debian['dpkg_opts'] }}"
-
   tags:
     - install
