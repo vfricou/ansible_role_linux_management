@@ -1,3 +1,5 @@
 ---
 # @var pamd_config: 'false' # Define if pamd configuration tasks will be executed
 pamd_config: false
+# @var rhel_subscription_force: 'no' # Force RHEL subscription reattach or update
+rhel_subscription_force: 'no'
