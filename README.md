@@ -20,11 +20,14 @@ Feel free to fork and update this according to your requirements.
 - bullseye (11)
 
 **Ubuntu** :
-- Bionic Beaver (18.04) - ESS : 04/2023 / EOL : 04/2028
-- Focal Fossa (20.04) - ESS : 04/2025 / EOL : 04/2030
-- Hirsute Hippo (21.04) - ESS : 01/2022 / EOL : 01/2022
+- Bionic Beaver (18.04)
+- Focal Fossa (20.04)
+- Jammy Jellyfish (22.04)
 
 **Rocky** :
+- 8
+
+**AlmaLinux** :
 - 8
 
 **RHEL** :

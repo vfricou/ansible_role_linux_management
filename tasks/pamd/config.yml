@@ -4,14 +4,11 @@
     path: /etc/pam.d/su
     regexp: '#(\s*)auth(\s+|\t+)sufficient(\s+|\t+)pam_wheel.so(\s+|\t+)trust(\s+|\t+)use_uid'
     replace: 'auth sufficient pam_wheel.so trust use_uid'
-  when: ansible_distribution == 'CentOS' or
-        ansible_distribution == 'RedHat' or
-        ansible_distribution == 'Rocky'
+  when: ansible_os_family == 'RedHat'
 
 - name: "pamd | config | debian based os - update pamd permission for wheel group"
   ansible.builtin.replace:
     path: /etc/pam.d/su
     regexp: '#(\s*)auth(\s+|\t+)sufficient(\s+|\t+)pam_wheel.so(\s+|\t+)trust'
     replace: 'auth sufficient pam_wheel.so trust'
-  when: ansible_distribution == 'Debian' or
-        ansible_distribution == 'Ubuntu'
+  when: ansible_os_family == 'Debian'

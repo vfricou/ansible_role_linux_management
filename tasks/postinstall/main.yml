@@ -3,27 +3,23 @@
   ansible.builtin.import_tasks: rhel/subscription.yml
   when: ansible_distribution == 'RedHat'
 
-- name: perform debian based specific tasks
+- name: "perform debian based specific tasks"
   block:
-    - name: import apt tasks
+    - name: "INCLUDE => DEBIAN | postinstall | apt tasks"
       ansible.builtin.import_tasks: debian/apt.yml
 
-    - name: import debian packages install
+    - name: "INCLUDE => DEBIAN | postinstall | debian packages install"
       ansible.builtin.import_tasks: debian/pkg_install.yml
-  when: ansible_distribution == 'Debian' or
-        ansible_distribution == 'Ubuntu'
+  when: ansible_os_family == 'Debian'
 
-- name: perform rhel based specific tasks
+- name: "perform rhel based specific tasks"
   block:
-    - name: import yum tasks
+    - name: "INCLUDE => RHEL | postinstall | yum tasks"
       ansible.builtin.import_tasks: rhel/yum.yml
 
-    - name: import RedHat packages install
+    - name: "INCLUDE => RHEL | postinstall | RedHat packages install"
       ansible.builtin.import_tasks: rhel/pkg_install.yml
-  when: ansible_distribution == 'CentOS' or
-        ansible_distribution == 'RedHat' or
-        ansible_distribution == 'Rocky' or
-        ansible_distribution == 'AlmaLinux'
+  when: ansible_os_family == 'RedHat'
 
-- name: import common package install
+- name: "INCLUDE => COMMON | postinstall | package install"
   ansible.builtin.import_tasks: pkg_install.yml
