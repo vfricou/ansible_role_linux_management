@@ -8,6 +8,7 @@ supported_platforms:
   - name: Rocky
     versions:
       - 8
+      - 9
   - name: Ubuntu
     versions:
       - 18
@@ -23,6 +24,7 @@ supported_platforms:
   - name: AlmaLinux
     versions:
       - 8
+      - 9
 
 # Common variables
 v_common:
