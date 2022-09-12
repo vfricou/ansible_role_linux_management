@@ -28,7 +28,6 @@
     - "{{ ansible_facts.packages.keys()|list | map('regex_search', v_debian['exclusions']) | select('string') }}"
   tags:
     - fullupgrade
-    - install
 
 - name: "postinstall | debian | apt | perform full upgrade"
   ansible.builtin.apt:
