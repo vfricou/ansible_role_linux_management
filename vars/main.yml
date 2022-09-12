@@ -10,9 +10,9 @@ supported_platforms:
       - 8
   - name: Ubuntu
     versions:
-      - 18.04
-      - 20.04
-      - 21.04
+      - 18
+      - 20
+      - 22
   - name: RedHat
     versions:
       - 7
