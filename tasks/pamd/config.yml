@@ -1,12 +1,12 @@
 ---
-- name: "pamd | config | redhat based os - update pamd permission for wheel group"
+- name: "Pamd | Config | Redhat based os - Update pamd permission for wheel group"
   ansible.builtin.replace:
     path: /etc/pam.d/su
     regexp: '#(\s*)auth(\s+|\t+)sufficient(\s+|\t+)pam_wheel.so(\s+|\t+)trust(\s+|\t+)use_uid'
     replace: 'auth sufficient pam_wheel.so trust use_uid'
   when: ansible_os_family == 'RedHat'
 
-- name: "pamd | config | debian based os - update pamd permission for wheel group"
+- name: "Pamd | Config | Debian based os - Update pamd permission for wheel group"
   ansible.builtin.replace:
     path: /etc/pam.d/su
     regexp: '#(\s*)auth(\s+|\t+)sufficient(\s+|\t+)pam_wheel.so(\s+|\t+)trust'

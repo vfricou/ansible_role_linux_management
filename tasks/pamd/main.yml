@@ -1,3 +1,3 @@
 ---
-- name: "pamd | import configurations tasks"
+- name: "Pamd | Import configurations tasks"
   ansible.builtin.import_tasks: config.yml

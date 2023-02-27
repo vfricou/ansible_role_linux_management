@@ -1,9 +1,9 @@
 ---
-- name: restart auditd
-  service:
+- name: "Restart auditd"
+  ansible.builtin.service:
     state: started
-    enabled: yes
+    enabled: true
     name: auditd
 
-- name: update mlocate database
-  command: updatedb
+- name: "Update mlocate database"
+  ansible.builtin.command: updatedb

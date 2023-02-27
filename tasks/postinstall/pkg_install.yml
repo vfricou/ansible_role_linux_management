@@ -1,30 +1,30 @@
 ---
-- name: "postinstall | install common packages"
+- name: "Postinstall | Install common packages"
+  tags:
+    - install
   block:
-    - name: "postinstall | pkg_install | install disk collection tools"
+    - name: "Postinstall | pkg_install | Install disk collection tools"
       ansible.builtin.package:
         state: present
         name: "{{ v_common['disk_pkg'] }}"
 
-    - name: "postinstall | pkg_install | install net collection tools"
+    - name: "Postinstall | pkg_install | Install net collection tools"
       ansible.builtin.package:
         state: present
         name: "{{ v_common['net_pkg'] }}"
 
-    - name: "postinstall | pkg_install | install sys collection tools"
+    - name: "Postinstall | pkg_install | Install sys collection tools"
       ansible.builtin.package:
         state: present
         name: "{{ v_common['sys_pkg'] }}"
-      notify: update mlocate database
+      notify: "Update mlocate database"
 
-    - name: "postinstall | pkg_install | install shell"
+    - name: "Postinstall | pkg_install | Install shell"
       ansible.builtin.package:
         state: present
         name: "{{ v_common['shell_pkg'] }}"
 
-    - name: "postinstall | pkg_install | install security collection tools"
+    - name: "Postinstall | pkg_install | Install security collection tools"
       ansible.builtin.package:
         state: present
         name: "{{ v_common['security_pkg'] }}"
-  tags:
-    - install
