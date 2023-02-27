@@ -26,12 +26,15 @@ Feel free to fork and update this according to your requirements.
 
 **Rocky** :
 - 8
+- 9
 
 **AlmaLinux** :
 - 8
+- 9
 
 **RHEL** :
 - 8
+- 9
 
 # Requirements
 
@@ -102,7 +105,7 @@ You could refer to milestones to full current roadmap.
 
 # Tests
 
-Initials tests was done through molecule.  
+Initial tests was done through molecule.  
 Role fully tested on virtual machines vanilla installed.
 
 ## Normal fails on molecule tests
