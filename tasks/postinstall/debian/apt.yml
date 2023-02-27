@@ -1,35 +1,35 @@
 ---
-- name: "postinstall | debian | apt | update local cache"
+- name: "Postinstall | Debian | Apt | Update local cache"
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 7200
   tags:
     - always
 
-- name: "postinstall | debian | apt | get packages facts"
+- name: "Postinstall | Debian | Apt | Get packages facts"
   ansible.builtin.package_facts:
   tags:
     - always
 
-- name: "postinstall | debian | apt | lock kernel packages"
+- name: "Postinstall | Debian | Apt | Lock kernel packages"
   ansible.builtin.dpkg_selections:
     name: '{{ item }}'
     selection: hold
   with_items:
-    - "{{ ansible_facts.packages.keys()|list | map('regex_search', v_debian['exclusions']) | select('string') }}"
+    - "{{ ansible_facts.packages.keys() | list | map('regex_search', v_debian['exclusions']) | select('string') }}"
   tags:
     - safeupgrade
 
-- name: "postinstall | debian | apt | unlock kernel packages"
+- name: "Postinstall | Debian | Apt | Unlock kernel packages"
   ansible.builtin.dpkg_selections:
     name: '{{ item }}'
     selection: install
   with_items:
-    - "{{ ansible_facts.packages.keys()|list | map('regex_search', v_debian['exclusions']) | select('string') }}"
+    - "{{ ansible_facts.packages.keys() | list | map('regex_search', v_debian['exclusions']) | select('string') }}"
   tags:
     - fullupgrade
 
-- name: "postinstall | debian | apt | perform full upgrade"
+- name: "Postinstall | Debian | Apt | Perform full upgrade"
   ansible.builtin.apt:
     upgrade: full
   environment:
@@ -37,7 +37,7 @@
   tags:
     - fullupgrade
 
-- name: "postinstall | debian | apt | perform upgrade without kernel"
+- name: "Postinstall | Debian | Apt | Perform upgrade without kernel"
   ansible.builtin.apt:
     upgrade: safe
   environment:

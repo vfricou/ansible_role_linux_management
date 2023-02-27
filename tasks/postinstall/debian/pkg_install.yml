@@ -1,30 +1,29 @@
 ---
-- name: "install debian specific packages"
+- name: "Install debian specific packages"
+  tags:
+    - install
   block:
-    - name: "postinstall | debian | pkg_install | install disk tools collection"
+    - name: "Postinstall | Debian | pkg_install | Install disk tools collection"
       ansible.builtin.apt:
         name: "{{ v_debian['disk_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
 
-    - name: "postinstall | debian | pkg_install | install network tools collection"
+    - name: "Postinstall | Debian | pkg_install | Install network tools collection"
       ansible.builtin.apt:
         name: "{{ v_debian['net_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
 
-    - name: "postinstall | debian | pkg_install | install security tools collection"
+    - name: "Postinstall | Debian | pkg_install | Install security tools collection"
       ansible.builtin.apt:
         name: "{{ v_debian['security_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
-      notify: restart auditd
+      notify: "Restart auditd"
 
-    - name: "postinstall | debian | pkg_install | install system tools collection"
+    - name: "Postinstall | Debian | pkg_install | Install system tools collection"
       ansible.builtin.apt:
         name: "{{ v_debian['sys_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
-
-  tags:
-    - install
