@@ -7,15 +7,15 @@
 # @tag bugsecupgrade # (RHEL only) Perform bugfix and security update
 # @tag subscription # (RHEL only) Perform subscription update
 
-- name: "import validator tasks"
+- name: "Import validator tasks"
   ansible.builtin.import_tasks: validator/main.yml
   tags:
     - always
 
-- name: "import postinstall tasks"
+- name: "Import postinstall tasks"
   ansible.builtin.import_tasks: postinstall/main.yml
 
-- name: "import postinstall tasks"
+- name: "Import postinstall tasks"
   ansible.builtin.import_tasks: pamd/main.yml
   when: pamd_config
   tags:

@@ -3,27 +3,22 @@ galaxy_info:
   role_name: "linux_management"
   author: "Vincent FRICOU"
   namespace: "vfricou"
+  standalone: true
   description: 'Linux servers post installation and updates tasks'
   license: MIT
-  min_ansible_version: 2.9
+  min_ansible_version: '2.9'
   platforms:
     - name: EL
       versions:
-        - 7
-        - 8
+        - '7'
+        - '8'
     - name: Debian
       versions:
-        - buster
-        - bullseye
+        - 'buster'
+        - 'bullseye'
     - name: Ubuntu
       versions:
-        - bionic
-        - focal
-        - impish
-    - name: Rocky
-      versions:
-        - 8
-    - name: AlmaLinux
-      versions:
-        - 8
+        - 'bionic'
+        - 'focal'
+        - 'impish'
 dependencies: []
