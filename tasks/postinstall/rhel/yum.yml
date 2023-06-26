@@ -1,29 +1,25 @@
 ---
-- name: "Postinstall | RHEL | Yum | Update local cache"
-  ansible.builtin.yum:
-    update_cache: true
-  tags:
-    - always
-
 - name: "Postinstall | RHEL | Yum | Perform full upgrade"
+  tags:
+    - fullupgrade
   ansible.builtin.yum:
     name: '*'
     state: latest
     update_only: true
-  tags:
-    - fullupgrade
 
 - name: "Postinstall | RHEL | Yum | Perform upgrade without kernel"
+  tags:
+    - safeupgrade
   ansible.builtin.yum:
     name: '*'
     state: latest
     update_only: true
     exclude:
       - "{{ v_rhel['exclusions'] }}"
-  tags:
-    - safeupgrade
 
 - name: "Postinstall | RHEL | Yum | Perform security and bugfix update"
+  tags:
+    - bugsecupgrade
   ansible.builtin.yum:
     name: '*'
     state: latest
@@ -32,5 +28,3 @@
     security: true
     exclude:
       - "{{ v_rhel['exclusions'] }}"
-  tags:
-    - bugsecupgrade

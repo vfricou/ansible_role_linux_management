@@ -13,9 +13,13 @@
     - always
 
 - name: "Import postinstall tasks"
+  become: true
+  become_user: 'root'
   ansible.builtin.import_tasks: postinstall/main.yml
 
 - name: "Import postinstall tasks"
+  become: true
+  become_user: 'root'
   ansible.builtin.import_tasks: pamd/main.yml
   when: pamd_config
   tags:

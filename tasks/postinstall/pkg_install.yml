@@ -14,10 +14,10 @@
         name: "{{ v_common['net_pkg'] }}"
 
     - name: "Postinstall | pkg_install | Install sys collection tools"
+      notify: "Update mlocate database"
       ansible.builtin.package:
         state: present
         name: "{{ v_common['sys_pkg'] }}"
-      notify: "Update mlocate database"
 
     - name: "Postinstall | pkg_install | Install shell"
       ansible.builtin.package:

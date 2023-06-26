@@ -4,15 +4,13 @@
     - install
   block:
     - name: "Postinstall | RHEL | pkg_install | Enable EPEL repository"
-      ansible.builtin.yum:
-        name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+      ansible.builtin.dnf:
+        name: epel-release
         state: present
-        disable_gpg_check: true
 
-    - name: "Postinstall | RHEL | pkg_install | Install dnf"
-      ansible.builtin.yum:
-        name:
-          - dnf
+    - name: "Postinstall | RHEL | pkg_install | Ensure dnf is present"
+      ansible.builtin.dnf:
+        name: dnf
         state: present
 
     - name: "Postinstall | RHEL | pkg_install | Install disk tools collection"
@@ -21,7 +19,7 @@
         state: present
 
     - name: "Postinstall | RHEL | pkg_install | Install security tools collection"
+      notify: "Restart auditd"
       ansible.builtin.dnf:
         name: "{{ v_rhel['security_pkg'] }}"
         state: present
-      notify: "Restart auditd"

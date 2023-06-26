@@ -16,11 +16,11 @@
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
 
     - name: "Postinstall | Debian | pkg_install | Install security tools collection"
+      notify: "Restart auditd"
       ansible.builtin.apt:
         name: "{{ v_debian['security_pkg'] }}"
         state: present
         dpkg_options: "{{ v_debian['dpkg_opts'] }}"
-      notify: "Restart auditd"
 
     - name: "Postinstall | Debian | pkg_install | Install system tools collection"
       ansible.builtin.apt:
