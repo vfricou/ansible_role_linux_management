@@ -2,6 +2,7 @@
 - name: "Postinstall | RHEL | Yum | Perform full upgrade"
   tags:
     - fullupgrade
+    - lm_fullupgrade
   ansible.builtin.yum:
     name: '*'
     state: latest
@@ -10,6 +11,7 @@
 - name: "Postinstall | RHEL | Yum | Perform upgrade without kernel"
   tags:
     - safeupgrade
+    - lm_safeupgrade
   ansible.builtin.yum:
     name: '*'
     state: latest
@@ -20,6 +22,7 @@
 - name: "Postinstall | RHEL | Yum | Perform security and bugfix update"
   tags:
     - bugsecupgrade
+    - lm_bugsecupgrade
   ansible.builtin.yum:
     name: '*'
     state: latest

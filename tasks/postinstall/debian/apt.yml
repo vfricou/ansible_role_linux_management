@@ -16,6 +16,7 @@
     - "{{ ansible_facts.packages.keys() | list | map('regex_search', v_debian['exclusions']) | select('string') }}"
   tags:
     - safeupgrade
+    - lm_safeupgrade
   ansible.builtin.dpkg_selections:
     name: '{{ item }}'
     selection: hold
@@ -25,6 +26,7 @@
     - "{{ ansible_facts.packages.keys() | list | map('regex_search', v_debian['exclusions']) | select('string') }}"
   tags:
     - fullupgrade
+    - lm_fullupgrade
   ansible.builtin.dpkg_selections:
     name: '{{ item }}'
     selection: install
@@ -34,6 +36,7 @@
     ACCEPT_EULA: y
   tags:
     - fullupgrade
+    - lm_fullupgrade
   ansible.builtin.apt:
     upgrade: full
 
@@ -42,5 +45,6 @@
     ACCEPT_EULA: y
   tags:
     - safeupgrade
+    - lm_safeupgrade
   ansible.builtin.apt:
     upgrade: safe

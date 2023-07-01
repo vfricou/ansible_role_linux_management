@@ -2,6 +2,7 @@
 - name: "Install debian specific packages"
   tags:
     - install
+    - lm_install
   block:
     - name: "Postinstall | Debian | pkg_install | Install disk tools collection"
       ansible.builtin.apt:

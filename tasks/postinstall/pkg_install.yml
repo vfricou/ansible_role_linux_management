@@ -2,6 +2,7 @@
 - name: "Postinstall | Install common packages"
   tags:
     - install
+    - lm_install
   block:
     - name: "Postinstall | pkg_install | Install disk collection tools"
       ansible.builtin.package:

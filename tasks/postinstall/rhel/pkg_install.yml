@@ -2,6 +2,7 @@
 - name: "Install rhel specific packages"
   tags:
     - install
+    - lm_install
   block:
     - name: "Postinstall | RHEL | pkg_install | Enable EPEL repository"
       ansible.builtin.dnf:
